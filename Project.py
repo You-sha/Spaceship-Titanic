@@ -27,15 +27,15 @@ for i in (test_data):
         test_data[i] = test_data[i].fillna(test_data[i].mean())
         
 train_data.HomePlanet = train_data.HomePlanet.fillna('Earth')
-train_data.CryoSleep = train_data.CryoSleep.fillna(train_data.CryoSleep.mean())
+train_data.CryoSleep = train_data.CryoSleep.fillna(train_data.mean())
 train_data.Destination = train_data.Destination.fillna('TRAPPIST-1e')
-train_data.VIP = train_data.VIP.fillna(train_data.VIP.mean())
+train_data.VIP = train_data.VIP.fillna(train_data.mean())
 train_data.isna().sum()
 
 test_data.HomePlanet = test_data.HomePlanet.fillna('Earth')
-test_data.CryoSleep = test_data.CryoSleep.fillna(test_data.CryoSleep.mean())
+test_data.CryoSleep = test_data.CryoSleep.fillna(test_data.mean())
 test_data.Destination = test_data.Destination.fillna('TRAPPIST-1e')
-test_data.VIP = test_data.VIP.fillna(test_data.VIP.mean())
+test_data.VIP = test_data.VIP.fillna(test_data.mean())
 test_data.isna().sum()
 
 X = pd.get_dummies(train_data[features])
