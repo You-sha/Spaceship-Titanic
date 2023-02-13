@@ -73,12 +73,25 @@ train_df_copy.HomePlanet = train_df_copy.HomePlanet.fillna('Earth')
 train_df_copy.Destination = train_df_copy.Destination.fillna('TRAPPIST-1e')
 train_df_copy.VIP = train_df_copy.VIP.fillna('False')
 train_df_copy.VIP = train_df_copy.VIP.astype('bool')
-train_df_copy.Cabin.fillna(method='ffill', inplace=True)
+
+train_df_copy['Cabin'] = train_df_copy.Cabin.fillna(method='ffill')
+
+
+train_df_copy['Group_nums'] = train_df_copy.PassengerId.apply(lambda x: x.split('_')).apply(lambda x: x[0])
+train_df_copy['Grouped'] = ((train_df_copy['Group_nums'].value_counts() > 1).reindex(train_df_copy['Group_nums'])).tolist()
+train_df_copy['Deck'] = train_df_copy.Cabin.apply(lambda x: str(x).split('/')).apply(lambda x: x[0])
+train_df_copy['Side'] = train_df_copy.Cabin.apply(lambda x: str(x).split('/')).apply(lambda x: x[2])
+train_df_copy['Has_expenses'] = train_df_copy['Expenses'] > 0
+train_df_copy['Is_Embryo'] = train_df_copy['Age'] == 0
+
+
+plt.bar(train_df_copy['Side'],train_df_copy['Transported'])
+plt.bar(train_df_copy['Deck'],train_df_copy['Transported'])
 
 train_df_copy.columns
-train_df_copy.drop(['Expenses', 'Adults', 'Adult_spending_awake', 'Adult_and_spending'],axis=1, inplace=True)
+train_df_copy.drop(['IsEmbryo'],axis=1, inplace=True)
 
-train_df_copy.to_csv('Cleaned and imputed data.csv',index=False)
+train_df_copy.to_csv('Cleaned and imputed data 2.csv',index=False)
 
 
 
