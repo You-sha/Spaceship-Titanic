@@ -93,7 +93,74 @@ train_df_copy.drop(['IsEmbryo'],axis=1, inplace=True)
 
 train_df_copy.to_csv('Cleaned and imputed data 2.csv',index=False)
 
+#Test Data
 
+test_df_copy = test_df.copy()
+
+test_df_copy['Expenses'] = test_df_copy[['RoomService', 'FoodCourt',
+                                           'ShoppingMall', 'Spa', 'VRDeck']].sum(axis=1)
+
+test_df_copy.Age = test_df_copy.Age.fillna(test_df_copy.Age.median())
+test_df_copy.loc[test_df_copy.Adult_spending_awake ==False, 'Age'] = 0
+
+test_df_copy['Adult_spending_awake'] = (test_df_copy['Expenses'] > 0) & (test_df_copy['Age'] >=13) & (test_df_copy['CryoSleep'] == False)
+
+test_df_copy['Cryosleep'] = 0
+test_df_copy.loc[test_df_copy['Expenses'] == 0, 'Cryosleep'] = 1
+test_df_copy.loc[test_df_copy.CryoSleep.astype('str') == 'True', 'Cryosleep'] = 1
+test_df_copy.loc[test_df_copy.CryoSleep.astype('str') == 'False', 'Cryosleep'] = 0
+test_df_copy['Cryosleep'] = test_df_copy['Cryosleep'].astype('bool')
+test_df_copy['CryoSleep'] = test_df_copy['Cryosleep']
+test_df_copy.drop('Cryosleep',axis=1,inplace=True)
+test_df_copy.drop('Name',axis=1,inplace=True)
+
+test_df_copy.loc[test_df_copy.CryoSleep == True,['RoomService', 'FoodCourt','ShoppingMall', 'Spa', 'VRDeck']] = 0
+test_df_copy.loc[test_df_copy.CryoSleep == True,['RoomService', 'FoodCourt','ShoppingMall', 'Spa', 'VRDeck']].isna().sum()
+
+test_df_copy['Age'].plot(kind='hist')
+test_df_copy['Adults'] = test_df_copy['Age'] >= 13
+
+test_df_copy['Adult_and_spending'] = (test_df_copy['Expenses'] > 0) & (test_df_copy['Age'] >=13)
+test_df_copy.loc[test_df_copy.Adult_and_spending == True]
+
+test_df_copy.RoomService = test_df_copy.RoomService.fillna(test_df_copy.RoomService.mean())
+test_df_copy.loc[test_df_copy.Adult_and_spending ==False, 'RoomService'] = 0
+
+test_df_copy.FoodCourt = test_df_copy.FoodCourt.fillna(test_df_copy.FoodCourt.mean())
+test_df_copy.loc[test_df_copy.Adult_and_spending ==False, 'FoodCourt'] = 0
+
+test_df_copy.ShoppingMall = test_df_copy.ShoppingMall.fillna(test_df_copy.ShoppingMall.mean())
+test_df_copy.loc[test_df_copy.Adult_and_spending ==False, 'ShoppingMall'] = 0
+
+test_df_copy.Spa = test_df_copy.Spa.fillna(test_df_copy.Spa.mean())
+test_df_copy.loc[test_df_copy.Adult_and_spending ==False, 'Spa'] = 0
+
+test_df_copy.VRDeck = test_df_copy.VRDeck.fillna(test_df_copy.VRDeck.mean())
+test_df_copy.loc[test_df_copy.Adult_and_spending ==False, 'VRDeck'] = 0
+
+test_df_copy.HomePlanet = test_df_copy.HomePlanet.fillna('Earth')
+test_df_copy.Destination = test_df_copy.Destination.fillna('TRAPPIST-1e')
+test_df_copy.VIP = test_df_copy.VIP.fillna('False')
+test_df_copy.VIP = test_df_copy.VIP.astype('bool')
+
+test_df_copy['Cabin'] = test_df_copy.Cabin.fillna(method='ffill')
+
+
+test_df_copy['Group_nums'] = test_df_copy.PassengerId.apply(lambda x: x.split('_')).apply(lambda x: x[0])
+test_df_copy['Grouped'] = ((test_df_copy['Group_nums'].value_counts() > 1).reindex(test_df_copy['Group_nums'])).tolist()
+test_df_copy['Deck'] = test_df_copy.Cabin.apply(lambda x: str(x).split('/')).apply(lambda x: x[0])
+test_df_copy['Side'] = test_df_copy.Cabin.apply(lambda x: str(x).split('/')).apply(lambda x: x[2])
+test_df_copy['Has_expenses'] = test_df_copy['Expenses'] > 0
+test_df_copy['Is_Embryo'] = test_df_copy['Age'] == 0
+
+
+plt.bar(test_df_copy['Side'],test_df_copy['Transported'])
+plt.bar(test_df_copy['Deck'],test_df_copy['Transported'])
+
+test_df_copy.columns
+test_df_copy.drop(['Expenses', 'Adult_spending_awake', 'Adult_and_spending','Adults'],axis=1, inplace=True)
+
+test_df_copy.to_csv('Cleaned and imputed test data.csv',index=False)
 
 
 
