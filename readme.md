@@ -22,13 +22,16 @@ With all that out of the way, let's get started :)
 
 <h2><b>Table of contents:</b></h2>
 
-* [Exploratory Data Analysis]()
+* [Exploratory Data Analysis](https://github.com/You-sha/Spaceship-Titanic#exploratory-data-analysis-)
 
-* [Imputing Null Values](https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Imputing-Null-Valueshttps://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Imputing-Null-Values)
+* [Imputing Null Values](https://github.com/You-sha/Spaceship-Titanic#imputing-null-values-)
 
-* [Feature Engineering](https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Feature-Engineeringhttps://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Feature-Engineering)
+* [Feature Engineering](https://github.com/You-sha/Spaceship-Titanic#feature-engineering-)
 
-* [Model Building](https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Model-Buildinghttps://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Model-Building)
+* [Model Building](https://github.com/You-sha/Spaceship-Titanic#model-building-)
+
+* [Results](https://github.com/You-sha/Spaceship-Titanic#-results-) 
+
 ---
 
 # Exploratory Data Analysis
