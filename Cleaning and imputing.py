@@ -101,7 +101,6 @@ test_df_copy['Expenses'] = test_df_copy[['RoomService', 'FoodCourt',
                                            'ShoppingMall', 'Spa', 'VRDeck']].sum(axis=1)
 
 test_df_copy.Age = test_df_copy.Age.fillna(test_df_copy.Age.median())
-test_df_copy.loc[test_df_copy.Adult_spending_awake ==False, 'Age'] = 0
 
 test_df_copy['Adult_spending_awake'] = (test_df_copy['Expenses'] > 0) & (test_df_copy['Age'] >=13) & (test_df_copy['CryoSleep'] == False)
 
@@ -152,10 +151,6 @@ test_df_copy['Deck'] = test_df_copy.Cabin.apply(lambda x: str(x).split('/')).app
 test_df_copy['Side'] = test_df_copy.Cabin.apply(lambda x: str(x).split('/')).apply(lambda x: x[2])
 test_df_copy['Has_expenses'] = test_df_copy['Expenses'] > 0
 test_df_copy['Is_Embryo'] = test_df_copy['Age'] == 0
-
-
-plt.bar(test_df_copy['Side'],test_df_copy['Transported'])
-plt.bar(test_df_copy['Deck'],test_df_copy['Transported'])
 
 test_df_copy.columns
 test_df_copy.drop(['Expenses', 'Adult_spending_awake', 'Adult_and_spending','Adults'],axis=1, inplace=True)

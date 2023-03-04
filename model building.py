@@ -2,7 +2,7 @@
 """
 Created on Mon Feb 13 16:02:11 2023
 
-@author: Shumail
+@author: Yousha
 """
 
 import pandas as pd
@@ -67,21 +67,6 @@ model_out = LogisticRegression(solver='liblinear')
 model_out.fit(X,y)
 y_pred2 = model_out.predict(df_test)
 
-
-Logist_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_log})
-Logist_out.to_csv('logist_pred.csv',index=False)
-
-Logist_out2 = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_log2})
-Logist_out2.to_csv('logist_pred2.csv',index=False)
-
-
-knn_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_knn})
-knn_out.to_csv('knn_pred.csv',index=False)
-
-rf_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_rf})
-rf_out.to_csv('rf_pred.csv',index=False)
-
-
 from sklearn.ensemble import GradientBoostingClassifier
 gbr = GradientBoostingClassifier(random_state = 1)
   
@@ -90,8 +75,6 @@ gbr.fit(X, y)
 gbr.score(X,y)
 pred_y_gbr = gbr.predict(pd.get_dummies((df_test[features])))
 
-gbr_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': pred_y_gbr})
-gbr_out.to_csv('gbr_pred.csv',index=False)
 
 from xgboost import XGBClassifier
 xgb = XGBClassifier()
@@ -100,16 +83,12 @@ xgb.score(X,y)
 
 y_pred_xgb = xgb.predict(pd.get_dummies((df_test[features])))
 
-xgb_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported':y_pred_xgb.astype('bool')})
-xgb_out.to_csv('xgb_pred.csv',index=False)
-
 gbc = GradientBoostingClassifier()
 parameters = {
     "n_estimators":[5,50,100],
     "max_depth":[1,3,5],
     "learning_rate":[0.01,0.1,1]
 }
-
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RandomizedSearchCV
@@ -124,14 +103,50 @@ gbc1.fit(X,y)
 gbc1.score(X,y)
 pred_y_gbr2 = gbc1.predict(pd.get_dummies((df_test[features])))
 
+from sklearn.metrics import plot_confusion_matrix
+from pandas.plotting import scatter_matrix
+
+plot_confusion_matrix(gbc1,X,y,cmap=plt.cm.Blues)
+plt.title('Gradient Boosting Classifier')
+plt.suptitle('Confusion Matrix')
+plt.savefig('GBC CM.png',dpi=600)
+
+import seaborn as sns
+
+df_train.columns
+
+correlations = df_train.corr()
+correlations["Transported"].sort_values(ascending=False)
+
+plt.figure(figsize=(10, 10))
+sns.heatmap(
+    correlations, square=True, linewidths=2, annot=True, cbar_kws={"shrink": 0.82}
+)
+plt.title("Correlation Matrix", fontsize=16, pad=30)
+plt.show()
+
+
+
+Logist_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_log})
+Logist_out.to_csv('logist_pred.csv',index=False)
+
+Logist_out2 = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_log2})
+Logist_out2.to_csv('logist_pred2.csv',index=False)
+
+knn_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_knn})
+knn_out.to_csv('knn_pred.csv',index=False)
+
+rf_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_rf})
+rf_out.to_csv('rf_pred.csv',index=False)
+
+gbr_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': pred_y_gbr})
+gbr_out.to_csv('gbr_pred.csv',index=False)
+
+xgb_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported':y_pred_xgb.astype('bool')})
+xgb_out.to_csv('xgb_pred.csv',index=False)
+
 gbc_out = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported':pred_y_gbr2})
 gbc_out.to_csv('gbr_pred2.csv',index=False)
-
-
-
-
-
-
 
 
 
