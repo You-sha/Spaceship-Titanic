@@ -3,6 +3,8 @@
 <p align="center"><b>Tools used</b>: Python (<b>Numpy, Pandas, Scikit-learn, Matplotlib</b>)</p>
     
 <p align="center"><b>Content</b>: Exploratory data analysis, imputing null values, feature engineering, model building and tuning.</p>
+
+<p align="center"> <b>Kaggle Notebook: https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus</b></p>
     
 ---
 
