@@ -1,8 +1,8 @@
-<center><h1><b> Spaceship Titanic </b></h1></center>
+# <p align="center"> Spaceship Titanic </p>
 
-<center><b>Tools used</b>: Python (<b>Numpy, Pandas, Scikit-learn, Matplotlib</b>)
+<p align="center"><b>Tools used</b>: Python (<b>Numpy, Pandas, Scikit-learn, Matplotlib</b>)</p>
     
-<center><b>Content</b>: Exploratory data analysis, imputing null values, feature engineering, model building and tuning.</center>
+<p align="center"><b>Content</b>: Exploratory data analysis, imputing null values, feature engineering, model building and tuning.</p>
     
 ---
 
@@ -22,7 +22,7 @@ With all that out of the way, let's get started :)
 
 <h2><b>Table of contents:</b></h2>
 
-* [Exploratory Data Analysis](https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Exploratory-Data-Analysishttps://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Exploratory-Data-Analysis)
+* [Exploratory Data Analysis]()
 
 * [Imputing Null Values](https://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Imputing-Null-Valueshttps://www.kaggle.com/code/youusha/spaceship-titanic-80-5-data-imputing-focus#Imputing-Null-Values)
 
@@ -63,19 +63,6 @@ train_df.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -287,19 +274,6 @@ train_df_copy.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -461,19 +435,6 @@ train_df_copy.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -626,19 +587,6 @@ train_df_copy.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -831,19 +779,6 @@ train_df_copy.loc[train_df_copy.Adult_and_spending == True]
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1302,19 +1237,6 @@ train_df_copy.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1729,19 +1651,6 @@ df_test.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2119,6 +2028,8 @@ And so, we are done!
 
 Time for submission.
 
+# <p align="center"> Results </p>
+
 
 ```python
 # Logist_out2 = pd.DataFrame({'PassengerId':df_test.PassengerId, 'Transported': y_pred_log2})
@@ -2161,19 +2072,6 @@ Tuned Gradient Boost competition score = **0.80476**
 
 And so, we have a winner.
 
----
+![GBC CM](https://user-images.githubusercontent.com/123200960/222893877-04c2cdf7-335c-4959-a7f0-39235d8bc657.png)
 
-# Closing
-
-Hope you enjoyed my notebook and got to learn something. I recognize that I could probably increase my accuracy further, but I am probably not going to pursue that for now.
-
-Still, I'd appreciate any feedback on this notebook.
-
-I wish you the best on your data science journey. Farewell!
-=======
-# Spaceship Titanic
-Classification models to predict whether a passenger aboard the Spaceship Titanic got transported to an alternate dimension or not.
-## Best Performance
-Gradient Bossting Classifier model (80.5% accuracy):
-
-<img src="https://user-images.githubusercontent.com/123200960/219067146-1561a62a-a281-4d55-9b51-95d4181d22f2.png" width="500" height="360">
+#
