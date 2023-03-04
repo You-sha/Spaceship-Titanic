@@ -22,13 +22,13 @@ With all that out of the way, let's get started :)
 
 <h2><b>Table of contents:</b></h2>
 
-* [Exploratory Data Analysis](https://github.com/You-sha/Spaceship-Titanic#exploratory-data-analysis-)
+* [Exploratory Data Analysis](https://github.com/You-sha/Spaceship-Titanic#exploratory-data-analysis)
 
-* [Imputing Null Values](https://github.com/You-sha/Spaceship-Titanic#imputing-null-values-)
+* [Imputing Null Values](https://github.com/You-sha/Spaceship-Titanic#imputing-null-values)
 
-* [Feature Engineering](https://github.com/You-sha/Spaceship-Titanic#feature-engineering-)
+* [Feature Engineering](https://github.com/You-sha/Spaceship-Titanic#feature-engineering)
 
-* [Model Building](https://github.com/You-sha/Spaceship-Titanic#model-building-)
+* [Model Building](https://github.com/You-sha/Spaceship-Titanic#model-building)
 
 * [Results](https://github.com/You-sha/Spaceship-Titanic#-results-) 
 
